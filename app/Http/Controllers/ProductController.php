@@ -35,7 +35,7 @@ class ProductController extends Controller
             'quantity' => $request->quantity
         ]);
 
-        return $product->product_id;
+        return response()->json($product, 201);
 
     }
     public function read(Request $request)
@@ -70,4 +70,8 @@ class ProductController extends Controller
         $product = Product::where('id', $product_id)->delete();
         return 'deleted';
     }
+
+    public function index() { 
+        return response()->json(Product::all()); 
+        } 
 }
